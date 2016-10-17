@@ -1,0 +1,250 @@
+Record ID,Epithet,Author or Creator >,Short summary
+10541,"Adrasteia",1792,
+11219,"Aenaos",1793,
+4034,"Agoraios",,
+16538,"Ainios",2,"from AInos"
+14240,"Aithrios",2,
+6252,"Aloeus",1792,"A hero"
+13161,"Alousas",1793,
+9050,"Amazonos ?",2,
+14004,"Anaios",2,"local deity"
+8002,"Anchialeios",,"of Anchilaos (epithet of Nymphs)"
+8013,"Aniketos (aneiketos)",1792,"unconquerable"
+8156,"Anthienos",2,
+10919,"Aphosikakos",1792,"repeling the evil"
+14212,"Archagetas",1792,"A hero near Salymbria"
+9298,"Armoulene",2,
+6836,"Arselenos",2,
+8662,"Artakene",1793,
+6979,"Arzenos",2,
+11513,"Asdoulos",1792,"A thracian hero-got"
+6245,"Astydamas",,"A hero"
+6246,"Astyochos",,"A hero"
+6244,"Athamas",,"A hero"
+9032,"Athyparenos",2,
+6243,"Atlas",,"A hero"
+6974,"Aularchenos",2,
+11555,"Aulariokos",2,
+6549,"Aularkenos",1792,"A deity in Mesambria"
+13149,"Aulousadenos",1793,
+13810,"Basilissa",1793,
+9723,"Baskidithios",2,
+16095,"Beeuchios",2,
+10486,"Beisaletenos",1792,"Epithet of Heracles in the Pautalia region"
+8257,"Birou[?]",2,
+8530,"Blekouros",2,
+7398,"Borkeithios",2,
+11983,"Boulaios",1792,
+8703,"Bourdapenai",2,"Nymphs of Bourdapa"
+10313,"Bourdapenos",2,
+6242,"Boutes",,"a hero"
+10475,"Byaiparene",1792,"Epithet of Hera in the region of Pautalia"
+11660,"Chryseochaites",1793,
+8099,"Chthonios",,
+7515,"Dabatopeios",1793,
+7510,"Dabatopienos",1793,
+13500,"Daiterenos",1793,
+16663,"Derzis",2,
+13809,"Despoina",1793,
+6697,"Dimeranos",1793,
+14337,"Dionysobolos",2,
+4050,"Dolichaios",,
+6847,"Dolichenos",2,
+13476,"Dooupyros",1793,
+8269,"Dortazenos",2,"Apollo
+"
+10496,"Doteira",1792,"Epithet of Persepone"
+13475,"Drigesos",1793,
+9594,"Edeinene ?",2,
+6577,"Eisenos",1792,"Epithet of Apollon"
+6732,"Eithia",1793,
+13786,"Elafebolos",1793,
+14209,"Eleneites",1792,"epiteth of Dionysos in Salymbria"
+6281,"Eleuthereus",,"Epithet of Dionysos"
+4037,"Eleutherios",,
+7211,"Emfanestatos",2,
+14266,"Enaulios",2,
+9170,"Enyalios",1792,"Epithet of the god Ares"
+4039,"Epekoos",1792,"The Hearkener"
+4074,"Epenor",,
+4038,"Ephorios",,
+13224,"Epifanes",1793,
+16467,"Eptaikenthos",2,
+8313,"Estrakenos",2,
+6531,"Eukarpos",1792,"Epithet of Dionysos"
+8481,"Geigon Aulousell",2,
+8472,"Geikaitienos",2,
+8453,"Geikesenos",2,
+8461,"Geikethienos",2,
+8312,"Geniakos",2,
+8318,"Genikos",2,
+7590,"Genous Archegos",2,
+8465,"Gikentienos",2,
+8457,"Ginkisenos",2,
+4040,"Horios",,
+6260,"Hyperdexios",1792,
+4036,"Hypsistos",,
+15007,"Iatreine",2,"female doctor"
+8049,"Iatros",1792,"Healing"
+11658,"Kallinikos",1793,
+14301,"Kallon",2,
+6902,"Kapetolios",2,"Capitolinus"
+13217,"Kaprenos",1793,
+10567,"Karistorenos",1792,"Epithet of Zeus and Hera in Caristorum, near Kjustendil"
+11967,"Karpodoter",1793,
+7987,"Karsenos",1792,"Epithet of Apollo"
+9234,"Karsimiene",2,
+12650,"Keiladebenos",2,
+12627,"Keiladeenos",2,
+10500,"Keilaideouenos",1792,"Epithet of Asklepios"
+12657,"Keilaiskenos",2,
+6568,"Kempenos",1792,"Epithet of Asklepios"
+7955,"Kendreisos / Kendrisos",1793,
+6358,"Keraunios",1793,
+8119,"Kermillenos",2,
+4048,"Kersenos",,
+12636,"Kiladeenos",2,
+4970,"Klaros",2,"Apollo"
+13629,"Kled[?]enos",1793,
+6661,"Kolofonios",1792,"Epithet of Apollo"
+14272,"Komatikos",2,
+16561,"Konos",2,
+10280,"Kordenos",2,
+7535,"Kore",1793,
+10482,"Kouidos",1792,"A local hero in the Pautalia region"
+9049,"Koulkoussenos",2,
+6249,"Kynosouros",,"A hero"
+6801,"Kyprogeneus",2,"born on Cyprus"
+8122,"Kyrmillenos",2,
+12664,"K[eilade]enos",2,
+13354,"Lampadeforos",1793,
+4245,"Lenaios",2,
+8522,"Letoios",2,"Apollo"
+13630,"Limenos",1793,
+12114,"Lofeites",1792,"epithet of Zeus in Perinthos"
+12123,"Lykios",1792,"epithet of Apollo"
+4072,"Machaonos",,
+6664,"Maloforos",1792,"Epithet of Ceres"
+14236,"Mamouzene",2,
+4191,"Maron",2,
+4035,"Mesopolites",,
+9204,"Metrikos",2,
+10656,"Mytorgenes",1792,"Epithet of Dionysos"
+16547,"Nikeforos",2,
+13355,"Nyktofanes",1793,
+4071,"Okkonenos",,
+6729,"Okonenos",1793,
+4052,"Olympia",,
+4051,"Olympios",,
+6250,"Ornyt[os or ion]",,"A hero"
+8876,"Ouerzelenos",2,
+16670,"Ouetespios",2,
+7262,"Ourania",1793,
+8132,"Ourdenos",2,
+16671,"Outaspios",2,
+4865,"Painos",2,"Asklepios?"
+6968,"Paionos",2,"Apollo and Orpheus"
+4044,"Paisoulenos",,
+12926,"Pallas",1792,"=Athena"
+14329,"Parabolos",2,
+7296,"Patroos",2,
+6251,"Peloros",,"A hero"
+4073,"Periestos",,
+11793,"Perseiades",1793,
+4041,"Podalirios",,
+4045,"Poenos",,
+6352,"Polias",1793,
+11955,"Progonikos",2,"Ancestral"
+8321,"Propylaios",2,
+4875,"Pyrmeroulas",2,
+14914,"Pythios",1792,"epithet of Apollo?"
+9036,"Raniskelenos",2,
+9999,"Rasyperenos",2,
+13743,"Rhodopeis",1793,
+4068,"Saldenoi",2,
+4053,"Saldenos",,
+4067,"Saldobysene",,
+4063,"Saldobysenos",,
+4062,"Saldokelenos",,
+4057,"Saldoouissenos",,
+4058,"Saldoousenos",,
+4055,"Saldooussenos",,
+4069,"Saldoouusenos",,
+4059,"Saldouisenos",,
+4054,"Saldousenos",,
+4064,"Saldouusenos",,
+13817,"Salenos",1793,
+4061,"Saltobysenos",,
+4060,"Saltobyssenos",,
+4056,"Saltouusenos",,
+15902,"Saprenos",2,"Σαπρηνός derives from an unattested place name Sapra (cf. vicus Saprisara: CIL VI 2933),  edd.pr."
+6835,"Sebazius",2,
+16665,"Seinoulazies",2,
+13530,"Sellenos",1793,
+7315,"Sgebdenos",2,
+6909,"Sikerenos",2,
+4046,"Sirenos",,
+10428,"Skalpenos",1792,"Epithet of Asklepios in Pautalia"
+8435,"Skarsene",2,
+6742,"Skelentene",1793,
+9415,"Skodrenos",2,
+10691,"Skokelenos",1792,
+10465,"Skopei[?]",1792,"some local hero in the region of Pautalia"
+6248,"Skyros",,"A hero"
+12655,"Sminther",2,
+4065,"Soldenos",,
+4070,"Soldoboouusenos",,
+10922,"Solenos",1792,
+16470,"Sonketene",2,
+4042,"Soteira",,
+4047,"Soter",,
+8163,"Souet[oulenos]",2,
+10536,"Souitoulenos",1792,"A local hero near Pautalia (Kjustendil)"
+10548,"Souketene",1792,"Epithet of Hera"
+10222,"Souregethes",2,
+8523,"Spindeenos",2,"maybe Smintheus?"
+9808,"Spinthopyrenos",1792,"Epithet of Asklepios in Pautalia (Kjustendil)"
+7393,"Staraskenos",1793,
+10231,"Sta[?]",2,
+14289,"Stomianos",2,
+10489,"Storenos",1792,"Epithet of Zeus and Hera"
+16669,"Stourouleos",2,
+9485,"Straminenos",2,
+16482,"Suidenos",2,
+16466,"Syria",2,
+11547,"Syroteres",2,
+10447,"Tadenos",1792,"Epithet of Apollo"
+8872,"Tarsozienos ?",2,
+13541,"Teradeenos",1793,
+10144,"Tiditene",1793,
+15564,"Tisasenos",2,
+12125,"Torontenos",1792,"an epithet of Apollo?"
+16578,"Totoithenos",2,
+6733,"Tourme",1793,
+13357,"Trimorfos",1793,
+13358,"Triodos",1793,
+8247,"Zairdenos",2,"Apollo"
+16666,"Zamazis",2,
+10723,"Zbelsourdos",1792,
+4043,"Zbelthiourdos",,
+9041,"Zelaenos",2,
+10263,"Zelsourdos",2,
+10306,"Zemdrienos",2,
+8244,"Zerdenos",2,"Apollo"
+7344,"Zgebdenos",2,
+10862,"Zgoulamenos",1793,
+9200,"Zinobastenos",2,
+4049,"Zousyreithos",,
+9588,"Zydeenos",2,
+6351,"Zygia",1793,
+9602,"Zylmyzdrienos",2,
+10008,"Zymdrenos",2,
+9613,"Zymedrenos",2,
+9937,"Zymlydrenos",2,
+9611,"Zymydrenos",2,
+9828,"Zymyzdenos",2,
+9948,"Zymyzdros",2,
+9606,"Zymzdrenos",2,
+9856,"Zysdrenos",2,
+6247,"[F]ebos",,"A hero"
+9418,"[Let]agenos",2,
