@@ -51,7 +51,7 @@ create table epigraphic_person (
 "Parent's name" text,
 "Ethnic name" text,
 "Partner's name" text,
-"Grand[arent's name" text,
+"Grandparent's name" text,
 "Comments" text
 );
 
@@ -153,7 +153,83 @@ COPY geographic_name
 FROM '/home/petra/Github/Heurist_files/Geographic_Name.txt'
 WITH DELIMITER ',' CSV HEADER;
 
-Record ID,Geographic name,Geographic Type,Type of geographical entity,Short summary,Mappable location,Date,Author or Creator
+alter table geographic_name add column mapLocText text;
+
+update geographic_name set mapLocText = "Mappable location";
+
+alter table geographic_name drop column "Mappable location";
+
+alter table geographic_name add column "Mappable location" geometry;
+
+update geographic_name set "Mappable location" = ST_GeomFromText(mapLocText, 4326);
+
+alter table geographic_name drop column mapLocText;
+
+create table inscriptions_info (
+"Record ID"	integer primary key,
+"Creator of the record" text,
+"Checked" text,
+"Corpus ID numeric" numeric,
+"SEG number" text,
+"Location >" text,
+"Geolocation" text,
+"Position certainty" text,
+"Geography notes" text,
+"Reuse" text,
+"Archaeological context" text,
+"Mound" text,
+"Material category" text,
+"Stone" text,
+"Origin of stone" text,
+"Object category" text,
+"Preservation" text,
+"Decoration" text,
+"Relief decoration" text,
+"Architectural relief" text,
+"Figural relief" text,
+"Decoration notes" text,
+"Visual record availability" text,
+"Start Year" numeric,
+"End Year" numeric,
+"Relative Date" text,
+"Century" numeric,
+"Dialect" text,
+"Latin" text,
+"Language form" text,
+"Script" text,
+"Layout" text,
+"Document typology" text,
+"Public documents" text,
+"Private documents" text,
+"Document typology notes" text,
+"Extent of lines" numeric,
+"Administrative keywords" text,
+"Formulaic keywords" text,
+"Religious keywords" text,
+"Epithet >" text,
+"Collective group names" text,
+"Geographic names" text,
+"Imperial titulature" text,
+"Currency" text,
+"Person >" text,
+"Visual documentation" text 
+);
+
+COPY inscription_info 
+FROM '/home/petra/Github/Heurist_files/Inscription_Info.txt'
+WITH DELIMITER ',' CSV HEADER;
+
+alter table inscription_info add column mapLocText text;
+
+update inscription_info set mapLocText = "Geolocation";
+
+alter table inscription_info drop column "Geolocation";
+
+alter table inscription_info add column "Geolocation" geometry;
+
+update inscription_info set "Geolocation" = ST_GeomFromText(mapLocText, 4326);
+
+alter table inscription_info drop column mapLocText;
 
 select * from administrative_keywords;
 select *, st_astext("Mappable location") from collective_name;
@@ -162,6 +238,7 @@ select * from honorific_keywords;
 select * from religious_keywords;
 select * from epithet;
 select * from epigraphic_person;
-select * from geographic_name;
 select * from location;
 select * from personal_name;
+select *, st_astext("Mappable location") from geographic_name;
+select *, st_astext("Geolocation") from inscription_info;
