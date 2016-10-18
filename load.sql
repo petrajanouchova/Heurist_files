@@ -132,8 +132,6 @@ create table geographic_name (
 
 
 
-
-
 \COPY geographic_name FROM 'Geographic_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 alter table geographic_name add column mapLocText text;
@@ -221,11 +219,26 @@ select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Sh
   JOIN administrative_keywords a USING ("adminKey")
   limit 5;
 
+create table formInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"formKey" integer REFERENCES formulaic_keywords,
+	PRIMARY KEY ("inscriptionKey", "formKey")
+);
+
+insert into formInscription("inscriptionKey", "formKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Formulaic keywords", '|')) s(token) where "Formulaic keywords" is not null;
+
+alter table inscription_info drop column "Formulaic keywords";
+
+select i."Corpus name", i."Corpus ID number", a."Formulaic category", a."Short summary"
+  from inscription_info i
+  JOIN formInscription USING ("inscriptionKey")
+  JOIN formulaic_keywords a USING ("formKey")
+  limit 5;
+
+--Brian, what have I done wrong?
 
 select * from epigraphic_person limit 5;
-
-
-
 
 
 
