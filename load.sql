@@ -6,7 +6,7 @@ create database hat;
 create extension "postgis";
 
 create table administrative_keywords (
-"Record ID"	integer primary key,
+"adminKey"	integer primary key,
 "Administrative keywords" text,
 "Category Admin keyword" text,
 "Origin" text,
@@ -17,7 +17,7 @@ create table administrative_keywords (
 \COPY administrative_keywords FROM 'Administrative_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table collective_name (
-"Record ID" integer primary key,
+"collectiveKey" integer primary key,
 "Ethnic name" text,
 "Group Name Category" text,
 "Origin" text,
@@ -42,7 +42,7 @@ update collective_name set "Mappable location" = ST_GeomFromText(mapLocText, 432
 alter table collective_name drop column mapLocText;
 
 create table epigraphic_person (
-"Record ID" integer primary key,
+"personKey" integer primary key,
 "Personal name" text,
 "Parent's name" text,
 "Ethnic name" text,
@@ -54,7 +54,7 @@ create table epigraphic_person (
 \COPY epigraphic_person FROM 'Epigraphic_Person.txt' WITH DELIMITER ',' CSV HEADER
 
 create table epithet (
-"Record ID" integer primary key,
+"epithetKey" integer primary key,
 "Epithet" text,
 "Author or Creator" text,
 "Short summary" text
@@ -63,7 +63,7 @@ create table epithet (
 \COPY epithet FROM 'Epithet.txt' WITH DELIMITER ',' CSV HEADER
 
 create table formulaic_keywords (
-"Record ID"	integer primary key,
+"formKey"	integer primary key,
 "Formulae" text,
 "Formulaic category" text,
 "Origin" text,
@@ -74,7 +74,7 @@ create table formulaic_keywords (
 \COPY formulaic_keywords FROM 'Formulaic_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table honorific_keywords (
-"Record ID"	integer primary key,
+"honorKey"	integer primary key,
 "Honorific keyword" text,
 "Origin" text,
 "Honorific category" text,
@@ -85,7 +85,7 @@ create table honorific_keywords (
 \COPY honorific_keywords FROM 'Honorific_keywords.txt' WITH DELIMITER ',' CSV HEADER
  
 create table religious_keywords (
-"Record ID"	integer primary key,
+"religKey"	integer primary key,
 "Religious keyword" text,
 "Origin" text,
 "Religious Category" text,
@@ -96,7 +96,7 @@ create table religious_keywords (
 \COPY religious_keywords FROM 'Religious_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table location (
-"Record ID"	integer primary key,
+"locKey"	integer primary key,
 "Modern Location" text,
 "Ancient Site" text,
 "Ancient site - region" text,
@@ -107,7 +107,7 @@ create table location (
 \COPY location FROM 'Location.txt' WITH DELIMITER ',' CSV HEADER
 
 create table personal_name (
-"Record ID"	integer primary key,
+"nameKey"	integer primary key,
 "Personal name" text,
 "Gender" text,
 "Ethnicity" text,
@@ -120,7 +120,7 @@ create table personal_name (
 \COPY personal_name FROM 'Personal_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 create table geographic_name (
-"Record ID"	integer primary key,
+"geoKey"	integer primary key,
 "Geographic name" text,
 "Geographic Type" text,
 "Type of geographical entity" text,
@@ -149,7 +149,7 @@ update geographic_name set "Mappable location" = ST_GeomFromText(mapLocText, 432
 alter table geographic_name drop column mapLocText;
 
 create table inscription_info (
-"Record ID" numeric PRIMARY KEY,
+"inscriptionKey" integer PRIMARY KEY,
 "Creator of the record" text,
 "Checked" text,
 "Corpus name" text,
@@ -203,6 +203,26 @@ create table inscription_info (
 
 \COPY inscription_info FROM 'Inscription_Info.txt' WITH DELIMITER ',' CSV HEADER
 
+
+create table adminInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"adminKey" integer REFERENCES administrative_keywords,
+	PRIMARY KEY ("inscriptionKey", "adminKey")
+);
+
+insert into adminInscription("inscriptionKey", "adminKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Administrative keywords", '|')) s(token) where "Administrative keywords" is not null;
+
+alter table inscription_info drop column "Administrative keywords";
+
+select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Short summary"
+  from inscription_info i
+  JOIN adminInscription USING ("inscriptionKey")
+  JOIN administrative_keywords a USING ("adminKey")
+  limit 5;
+
+
+
 alter table inscription_info add column mapLocText text;
 
 update inscription_info set mapLocText = "Geolocation";
@@ -215,14 +235,14 @@ update inscription_info set "Geolocation" = ST_GeomFromText(mapLocText, 4326);
 
 alter table inscription_info drop column mapLocText;
 
-select * from administrative_keywords;
-select *, st_astext("Mappable location") from collective_name;
-select * from formulaic_keywords;
-select * from honorific_keywords;
-select * from religious_keywords;
-select * from epithet;
-select * from epigraphic_person;
-select * from location;
-select * from personal_name;
-select *, st_astext("Mappable location") from geographic_name;
-select *, st_astext("Geolocation") from inscription_info;
+-- select * from administrative_keywords;
+-- select *, st_astext("Mappable location") from collective_name;
+-- select * from formulaic_keywords;
+-- select * from honorific_keywords;
+-- select * from religious_keywords;
+-- select * from epithet;
+-- select * from epigraphic_person;
+-- select * from location;
+-- select * from personal_name;
+-- select *, st_astext("Mappable location") from geographic_name;
+-- select *, st_astext("Geolocation") from inscription_info;
