@@ -47,6 +47,15 @@ ALTER TABLE
  I Aeg Thrace | 2                | Polis                   | Greek city-state
 (5 rows)
 
+ personKey |       Personal name        | Parent's name | Ethnic name | Partner's name | Grandparent's name | Comments 
+-----------+----------------------------+---------------+-------------+----------------+--------------------+----------
+     16150 | 16149                      |               |             |                |                    | 
+     11999 | 11998                      |               |             |                |                    | 
+     12082 | 11232                      |               |             |                |                    | 
+     16137 | 16136|2176|2189|10154|2609 |               |             |                |                    | 
+     13036 | 13035                      |               |             |                |                    | 
+(5 rows)
+
 ALTER TABLE
 UPDATE 4665
 ALTER TABLE

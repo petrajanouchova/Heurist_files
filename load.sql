@@ -1,4 +1,4 @@
-\c mq20151400
+\c template1
 drop database hat;
 create database hat;
 \c hat
@@ -220,6 +220,12 @@ select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Sh
   JOIN adminInscription USING ("inscriptionKey")
   JOIN administrative_keywords a USING ("adminKey")
   limit 5;
+
+
+select * from epigraphic_person limit 5;
+
+
+
 
 
 
