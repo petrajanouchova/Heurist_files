@@ -14,9 +14,7 @@ create table administrative_keywords (
 "Author or Creator >" text
 );
 
-COPY administrative_keywords 
-FROM '/home/petra/Github/Heurist_files/Administrative_keywords.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY administrative_keywords FROM 'Administrative_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table collective_name (
 "Record ID" integer primary key,
@@ -29,9 +27,7 @@ create table collective_name (
 "Author or Creator" text
 );
 
-COPY collective_name 
-FROM '/home/petra/Github/Heurist_files/Collective_Name.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY collective_name FROM 'Collective_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 alter table collective_name add column mapLocText text;
 
@@ -55,9 +51,7 @@ create table epigraphic_person (
 "Comments" text
 );
 
-COPY epigraphic_person
-FROM '/home/petra/Github/Heurist_files/Epigraphic_Person.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY epigraphic_person FROM 'Epigraphic_Person.txt' WITH DELIMITER ',' CSV HEADER
 
 create table epithet (
 "Record ID" integer primary key,
@@ -66,9 +60,7 @@ create table epithet (
 "Short summary" text
 );
 
-COPY epithet
-FROM '/home/petra/Github/Heurist_files/Epithet.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY epithet FROM 'Epithet.txt' WITH DELIMITER ',' CSV HEADER
 
 create table formulaic_keywords (
 "Record ID"	integer primary key,
@@ -79,9 +71,7 @@ create table formulaic_keywords (
 "Author or Creator >" text
 );
 
-COPY formulaic_keywords 
-FROM '/home/petra/Github/Heurist_files/Formulaic_keywords.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY formulaic_keywords FROM 'Formulaic_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table honorific_keywords (
 "Record ID"	integer primary key,
@@ -92,9 +82,7 @@ create table honorific_keywords (
 "Author or Creator >" text
 );
 
-COPY honorific_keywords 
-FROM '/home/petra/Github/Heurist_files/Honorific_keywords.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY honorific_keywords FROM 'Honorific_keywords.txt' WITH DELIMITER ',' CSV HEADER
  
 create table religious_keywords (
 "Record ID"	integer primary key,
@@ -105,9 +93,7 @@ create table religious_keywords (
 "Author or Creator >" text
 );
 
-COPY religious_keywords 
-FROM '/home/petra/Github/Heurist_files/Religious_keywords.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY religious_keywords FROM 'Religious_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table location (
 "Record ID"	integer primary key,
@@ -118,11 +104,7 @@ create table location (
 "Author or Creator >" text
 );
 
-COPY location 
-FROM '/home/petra/Github/Heurist_files/Location.txt'
-WITH DELIMITER ',' CSV HEADER;
-
-Record ID,Personal name,Gender,Ethnicity,Roman onomastics,LPGN date,Parissaki date,Author or Creator
+\COPY location FROM 'Location.txt' WITH DELIMITER ',' CSV HEADER
 
 create table personal_name (
 "Record ID"	integer primary key,
@@ -135,13 +117,12 @@ create table personal_name (
 "Author or Creator >" text
 );
 
-COPY personal_name 
-FROM '/home/petra/Github/Heurist_files/Personal_Name.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY personal_name FROM 'Personal_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 create table geographic_name (
 "Record ID"	integer primary key,
 "Geographic name" text,
+"Geographic Type" text,
 "Type of geographical entity" text,
 "Short summary" text,
 "Mappable location" text,
@@ -149,9 +130,11 @@ create table geographic_name (
 "Author or Creator >" text
 );
 
-COPY geographic_name 
-FROM '/home/petra/Github/Heurist_files/Geographic_Name.txt'
-WITH DELIMITER ',' CSV HEADER;
+
+
+
+
+\COPY geographic_name FROM 'Geographic_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 alter table geographic_name add column mapLocText text;
 
@@ -165,10 +148,12 @@ update geographic_name set "Mappable location" = ST_GeomFromText(mapLocText, 432
 
 alter table geographic_name drop column mapLocText;
 
-create table inscriptions_info (
-"Record ID"	integer primary key,
+create table inscription_info (
+"Record ID" numeric PRIMARY KEY,
 "Creator of the record" text,
 "Checked" text,
+"Corpus name" text,
+"Corpus ID number" text,
 "Corpus ID numeric" numeric,
 "SEG number" text,
 "Location >" text,
@@ -192,7 +177,7 @@ create table inscriptions_info (
 "Start Year" numeric,
 "End Year" numeric,
 "Relative Date" text,
-"Century" numeric,
+"Century" text,
 "Dialect" text,
 "Latin" text,
 "Language form" text,
@@ -202,9 +187,10 @@ create table inscriptions_info (
 "Public documents" text,
 "Private documents" text,
 "Document typology notes" text,
-"Extent of lines" numeric,
+"Extent of lines" text,
 "Administrative keywords" text,
 "Formulaic keywords" text,
+"Honorific keywords" text,
 "Religious keywords" text,
 "Epithet >" text,
 "Collective group names" text,
@@ -212,12 +198,10 @@ create table inscriptions_info (
 "Imperial titulature" text,
 "Currency" text,
 "Person >" text,
-"Visual documentation" text 
+"Visual documentation" text
 );
 
-COPY inscription_info 
-FROM '/home/petra/Github/Heurist_files/Inscription_Info.txt'
-WITH DELIMITER ',' CSV HEADER;
+\COPY inscription_info FROM 'Inscription_Info.txt' WITH DELIMITER ',' CSV HEADER
 
 alter table inscription_info add column mapLocText text;
 
