@@ -236,10 +236,119 @@ select i."Corpus name", i."Corpus ID number", a."Formulaic category", a."Short s
   JOIN formulaic_keywords a USING ("formKey")
   limit 5;
 
---Brian, what have I done wrong?
+create table honorInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"honorKey" integer REFERENCES honorific_keywords,
+	PRIMARY KEY ("inscriptionKey", "honorKey")
+);
 
-select * from epigraphic_person limit 5;
+insert into honorInscription("inscriptionKey", "honorKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Honorific keywords", '|')) s(token) where "Honorific keywords" is not null;
 
+alter table inscription_info drop column "Honorific keywords";
+
+select i."Corpus name", i."Corpus ID number", a."Honorific keyword", a."Short summary"
+  from inscription_info i
+  JOIN honorInscription USING ("inscriptionKey")
+  JOIN honorific_keywords a USING ("honorKey")
+  limit 5;
+
+create table religInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"religKey" integer REFERENCES religious_keywords,
+	PRIMARY KEY ("inscriptionKey", "religKey")
+);
+
+insert into religInscription("inscriptionKey", "religKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Religious keywords", '|')) s(token) where "Religious keywords" is not null;
+
+alter table inscription_info drop column "Religious keywords";
+
+select i."Corpus name", i."Corpus ID number", a."Religious keyword", a."Short summary"
+  from inscription_info i
+  JOIN religInscription USING ("inscriptionKey")
+  JOIN religious_keywords a USING ("religKey")
+  limit 5; 
+
+create table epithetInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"epithetKey" integer REFERENCES epithet,
+	PRIMARY KEY ("inscriptionKey", "epithetKey")
+);
+
+insert into epithetInscription("inscriptionKey", "epithetKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Epithet >", '|')) s(token) where "Epithet >" is not null;
+
+alter table inscription_info drop column "Epithet >";
+
+select i."Corpus name", i."Corpus ID number", a."Epithet", a."Short summary"
+  from inscription_info i
+  JOIN epithetInscription USING ("inscriptionKey")
+  JOIN epithet a USING ("epithetKey")
+  limit 5;
+
+create table locInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"locKey" integer REFERENCES location,
+	PRIMARY KEY ("inscriptionKey", "locKey")
+);
+
+insert into locInscription("inscriptionKey", "locKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Location >", '|')) s(token) where "Location >" is not null;
+
+alter table inscription_info drop column "Location >";
+
+select i."Corpus name", i."Corpus ID number", a."Modern Location", a."Ancient Site"
+  from inscription_info i
+  JOIN locInscription USING ("inscriptionKey")
+  JOIN location a USING ("locKey")
+  limit 5;
+
+
+create table geoInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"geoKey" integer REFERENCES geographic_name,
+	PRIMARY KEY ("inscriptionKey", "geoKey")
+);
+
+insert into geoInscription("inscriptionKey", "geoKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Geographic names", '|')) s(token) where "Geographic names" is not null;
+
+alter table inscription_info drop column "Geographic names";
+
+select i."Corpus name", i."Corpus ID number", a."Geographic name", a."Geographic Type"
+  from inscription_info i
+  JOIN geoInscription USING ("inscriptionKey")
+  JOIN geographic_name a USING ("geoKey")
+  limit 5;
+
+create table collective_name (
+"collectiveKey" integer primary key,
+"Ethnic name" text,
+"Group Name Category" text,
+"Origin" text,
+"Typology of ethnic name" text,
+"Short summary" text,
+"Mappable location" text,
+"Author or Creator" text
+);
+
+create table collectiveInscription (
+	"inscriptionKey" integer REFERENCES inscription_info,
+	"collectiveKey" integer REFERENCES collective_name,
+	PRIMARY KEY ("inscriptionKey", "collectiveKey")
+);
+
+insert into collectiveInscription("inscriptionKey", "collectiveKey")
+select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Collective group names", '|')) s(token) where "Collective group names" is not null;
+
+alter table inscription_info drop column "Collective group names";
+
+select i."Corpus name", i."Corpus ID number", a."Ethnic name", a."Group Name Category"
+  from inscription_info i
+  JOIN collectiveInscription USING ("inscriptionKey")
+  JOIN collective_name a USING ("collectiveKey")
+  limit 5;
 
 
 alter table inscription_info add column mapLocText text;
