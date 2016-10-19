@@ -27,6 +27,7 @@ create table collective_name (
 "Author or Creator" text
 );
 
+
 \COPY collective_name FROM 'Collective_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 alter table collective_name add column mapLocText text;
@@ -213,11 +214,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Administrative keywords";
 
-select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Short summary"
-  from inscription_info i
-  JOIN adminInscription USING ("inscriptionKey")
-  JOIN administrative_keywords a USING ("adminKey")
-  limit 5;
 
 create table formInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
@@ -230,12 +226,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Formulaic keywords";
 
-select i."Corpus name", i."Corpus ID number", a."Formulaic category", a."Short summary"
-  from inscription_info i
-  JOIN formInscription USING ("inscriptionKey")
-  JOIN formulaic_keywords a USING ("formKey")
-  limit 5;
-
 create table honorInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
 	"honorKey" integer REFERENCES honorific_keywords,
@@ -247,11 +237,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Honorific keywords";
 
-select i."Corpus name", i."Corpus ID number", a."Honorific keyword", a."Short summary"
-  from inscription_info i
-  JOIN honorInscription USING ("inscriptionKey")
-  JOIN honorific_keywords a USING ("honorKey")
-  limit 5;
 
 create table religInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
@@ -264,11 +249,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Religious keywords";
 
-select i."Corpus name", i."Corpus ID number", a."Religious keyword", a."Short summary"
-  from inscription_info i
-  JOIN religInscription USING ("inscriptionKey")
-  JOIN religious_keywords a USING ("religKey")
-  limit 5; 
 
 create table epithetInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
@@ -281,12 +261,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Epithet >";
 
-select i."Corpus name", i."Corpus ID number", a."Epithet", a."Short summary"
-  from inscription_info i
-  JOIN epithetInscription USING ("inscriptionKey")
-  JOIN epithet a USING ("epithetKey")
-  limit 5;
-
 create table locInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
 	"locKey" integer REFERENCES location,
@@ -298,11 +272,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Location >";
 
-select i."Corpus name", i."Corpus ID number", a."Modern Location", a."Ancient Site"
-  from inscription_info i
-  JOIN locInscription USING ("inscriptionKey")
-  JOIN location a USING ("locKey")
-  limit 5;
 
 
 create table geoInscription (
@@ -322,16 +291,6 @@ select i."Corpus name", i."Corpus ID number", a."Geographic name", a."Geographic
   JOIN geographic_name a USING ("geoKey")
   limit 5;
 
-create table collective_name (
-"collectiveKey" integer primary key,
-"Ethnic name" text,
-"Group Name Category" text,
-"Origin" text,
-"Typology of ethnic name" text,
-"Short summary" text,
-"Mappable location" text,
-"Author or Creator" text
-);
 
 create table collectiveInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
@@ -344,11 +303,6 @@ select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(
 
 alter table inscription_info drop column "Collective group names";
 
-select i."Corpus name", i."Corpus ID number", a."Ethnic name", a."Group Name Category"
-  from inscription_info i
-  JOIN collectiveInscription USING ("inscriptionKey")
-  JOIN collective_name a USING ("collectiveKey")
-  limit 5;
 
 
 alter table inscription_info add column mapLocText text;
@@ -362,6 +316,58 @@ alter table inscription_info add column "Geolocation" geometry;
 update inscription_info set "Geolocation" = ST_GeomFromText(mapLocText, 4326);
 
 alter table inscription_info drop column mapLocText;
+
+
+
+
+select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Short summary"
+  from inscription_info i
+  JOIN adminInscription USING ("inscriptionKey")
+  JOIN administrative_keywords a USING ("adminKey")
+  limit 5;
+
+
+select i."Corpus name", i."Corpus ID number", a."Formulaic category", a."Short summary"
+  from inscription_info i
+  JOIN formInscription USING ("inscriptionKey")
+  JOIN formulaic_keywords a USING ("formKey")
+  limit 5;
+
+
+select i."Corpus name", i."Corpus ID number", a."Honorific keyword", a."Short summary"
+  from inscription_info i
+  JOIN honorInscription USING ("inscriptionKey")
+  JOIN honorific_keywords a USING ("honorKey")
+  limit 5;
+
+
+select i."Corpus name", i."Corpus ID number", a."Religious keyword", a."Short summary"
+  from inscription_info i
+  JOIN religInscription USING ("inscriptionKey")
+  JOIN religious_keywords a USING ("religKey")
+  limit 5; 
+
+
+select i."Corpus name", i."Corpus ID number", a."Epithet", a."Short summary"
+  from inscription_info i
+  JOIN epithetInscription USING ("inscriptionKey")
+  JOIN epithet a USING ("epithetKey")
+  limit 5;
+
+
+select i."Corpus name", i."Corpus ID number", a."Modern Location", a."Ancient Site"
+  from inscription_info i
+  JOIN locInscription USING ("inscriptionKey")
+  JOIN location a USING ("locKey")
+  limit 5;
+
+
+select i."Corpus name", i."Corpus ID number", a."Ethnic name", a."Group Name Category"
+  from inscription_info i
+  JOIN collectiveInscription USING ("inscriptionKey")
+  JOIN collective_name a USING ("collectiveKey")
+  limit 5;
+
 
 -- select * from administrative_keywords;
 -- select *, st_astext("Mappable location") from collective_name;
