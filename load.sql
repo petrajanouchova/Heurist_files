@@ -370,6 +370,7 @@ insert into personCollectiveName (personKey, collectiveKey)
 
 
 
+alter table inscription_info drop column Person;
 
 
 

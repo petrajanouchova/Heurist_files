@@ -74,6 +74,7 @@ INSERT 0 3233
 INSERT 0 464
 INSERT 0 58
 INSERT 0 162
+ALTER TABLE
  corpusname | corpusidnumber | administrativekeywords |                 shortsummary                 
 ------------+----------------+------------------------+----------------------------------------------
  IG Bulg 4  | 2301|2307      | Stratiotes             | soldier
