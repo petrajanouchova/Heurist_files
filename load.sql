@@ -322,17 +322,6 @@ select i."Corpus name", i."Corpus ID number", a."Geographic name", a."Geographic
   JOIN geographic_name a USING ("geoKey")
   limit 5;
 
-create table collective_name (
-"collectiveKey" integer primary key,
-"Ethnic name" text,
-"Group Name Category" text,
-"Origin" text,
-"Typology of ethnic name" text,
-"Short summary" text,
-"Mappable location" text,
-"Author or Creator" text
-);
-
 create table collectiveInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
 	"collectiveKey" integer REFERENCES collective_name,
