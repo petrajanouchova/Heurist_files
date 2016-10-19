@@ -56,15 +56,6 @@ ALTER TABLE
 CREATE TABLE
 INSERT 0 315
 ALTER TABLE
- Corpus name  | Corpus ID number | Geographic name | Geographic Type 
---------------+------------------+-----------------+-----------------
- Other        | Kabyle 10        | Kabyle          | Settlement
- I Aeg Thrace | 2                | Abdera          | Settlement
- I Aeg Thrace | 4                | Delphi          | Settlement
- I Aeg Thrace | 5                | Rome            | Settlement
- I Aeg Thrace | 5                | Teos            | Area
-(5 rows)
-
 CREATE TABLE
 INSERT 0 459
 ALTER TABLE
@@ -74,66 +65,102 @@ ALTER TABLE
 ALTER TABLE
 UPDATE 4665
 ALTER TABLE
- Corpus name  | Corpus ID number | Administrative keywords |                    Short summary                     
---------------+------------------+-------------------------+------------------------------------------------------
- I Aeg Thrace | 8                | Boule                   | the council in the Greek city
- I Aeg Thrace | 8                | Demos                   | the people of a Greek polis
- I Aeg Thrace | 8                | Polis                   | Greek city-state
- I Aeg Thrace | 8                | Psefisma                | an official decision, issued by boule, ekklesia atc.
- I Aeg Thrace | 8                | Nomofylax               | guardian of law
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 6449
+INSERT 0 7386
+INSERT 0 3233
+INSERT 0 464
+INSERT 0 58
+INSERT 0 162
+ corpusname | corpusidnumber | administrativekeywords |                 shortsummary                 
+------------+----------------+------------------------+----------------------------------------------
+ IG Bulg 4  | 2301|2307      | Stratiotes             | soldier
+ IG Bulg 4  | 2305|5919      | Hypatos                | greek translation of latin "consul"
+ IG Bulg 4  | 2318|5920      | Autokrator             | commandant of an army, later Roman emperor
+ IG Bulg 4  | 2318|5920      | Kaisar                 | Caesar
+ Other      | Kabyle 2       | Basileus               | king or eponymous official in the Greek city
 (5 rows)
 
- Corpus name  | Corpus ID number |  Formulaic category  |                                   Short summary                                   
---------------+------------------+----------------------+-----------------------------------------------------------------------------------
- IG Bulg 1(2) | 8                | Invocation           | May the Gods be with you... opening formula of any inscription, wishing good luck
- IG Bulg 1(2) | 9                | Invocation           | May the Gods be with you... opening formula of any inscription, wishing good luck
- IG Bulg 1(2) | 9 bis            | Funerary             | in a favour, pleasure, sake
- I Aeg Thrace | 4                | Provision of display | the procedure of inscribing (on a stele)
- I Aeg Thrace | 4                | Provision of display | on the stone stele
+  corpusname  | corpusidnumber |  formulaiccategory   |                                   shortsummary                                    
+--------------+----------------+----------------------+-----------------------------------------------------------------------------------
+ IG Bulg 1(2) | 8              | Invocation           | May the Gods be with you... opening formula of any inscription, wishing good luck
+ IG Bulg 1(2) | 9              | Invocation           | May the Gods be with you... opening formula of any inscription, wishing good luck
+ IG Bulg 1(2) | 9 bis          | Funerary             | in a favour, pleasure, sake
+ I Aeg Thrace | 4              | Provision of display | the procedure of inscribing (on a stele)
+ I Aeg Thrace | 4              | Provision of display | on the stone stele
 (5 rows)
 
- Corpus name  | Corpus ID number | Honorific keyword |                 Short summary                 
---------------+------------------+-------------------+-----------------------------------------------
- IG Bulg 1(2) | 225              | Stefanos          | crown
- I Aeg Thrace | 8                | Ateleia           | exemption from public burdens
- I Aeg Thrace | 8                | Eunous            | with a good will
- I Aeg Thrace | 8                | Kalos kai agathos | honorific formula, the beautiful and the good
- I Aeg Thrace | 8                | Epainesai         | to praise
+  corpusname  | corpusidnumber | honorifickeyword |             shortsummary             
+--------------+----------------+------------------+--------------------------------------
+ I Aeg Thrace | 4              | Eunous           | with a good will
+ I Aeg Thrace | 4              | Stefanos         | crown
+ I Aeg Thrace | 5              | Filotimia        | rivalry for honour
+ I Aeg Thrace | 5              | Proedria         | right of front seats at public games
+ I Aeg Thrace | 5              | Prothymos        | eager, willing
 (5 rows)
 
- Corpus name  | Corpus ID number | Religious keyword |                                               Short summary                                                
---------------+------------------+-------------------+------------------------------------------------------------------------------------------------------------
- IG Bulg 3,1  | 1327             | Hera              | female deity, mother goddess
- IG Bulg 3,1  | 1327             | kyrios            | a lord, male god
- IG Bulg 3,1  | 1327             | Zeus              | male deity, the father, the ruler
- IG Bulg 1(2) | 225              | Dionysus          | god of the grape harvest, winemaking and wine, of ritual madness, fertility, theatre and religious ecstasy
- IG Bulg 1(2) | 225              | hiereus           | a priest
+  corpusname  | corpusidnumber |      religiouskeyword      |    shortsummary    
+--------------+----------------+----------------------------+--------------------
+ IG Bulg 1(2) | 1              | hiereus                    | a priest
+ IG Bulg 1(2) | 6              | hiereus                    | a priest
+ IG Bulg 1(2) | 7 ter          | Theoi Samothrakioi         | Samothraceans gods
+ IG Bulg 1(2) | 8              | Meter theon/Mother of Gods | female deity
+ IG Bulg 1(2) | 8 bis          | Thea Syria                 | Syrian goddess
 (5 rows)
 
- Corpus name  | Corpus ID number |    Epithet    |   Short summary   
---------------+------------------+---------------+-------------------
- Other        | Kabyle 18        | Tadenos       | Epithet of Apollo
- Other        | Kabyle 20        | Aularchenos   | 
- Other        | Kabyle 21        | Zbelthiourdos | 
- Other        | Kabyle 24        | Tisasenos     | 
- I Aeg Thrace | 13               | Agoraios      | 
+ corpusname | corpusidnumber |   epithet   |    shortsummary     
+------------+----------------+-------------+---------------------
+ IG Bulg 4  | 2304           | Pyrmeroulas | 
+ IG Bulg 4  | 2305|5919      | Solenos     | 
+ IG Bulg 4  | 2319           | Asdoulos    | A thracian hero-got
+ Other      | Kabyle 18      | Tadenos     | Epithet of Apollo
+ Other      | Kabyle 20      | Aularchenos | 
 (5 rows)
 
- Corpus name  | Corpus ID number | Modern Location | Ancient Site 
---------------+------------------+-----------------+--------------
- I Aeg Thrace | 1                | Abdera          | Abdera
- I Aeg Thrace | 2                | Abdera          | Abdera
- IG Bulg 1(2) | 1                | Tvarditsa       | 
- IG Bulg 1(2) | 2                | Tvarditsa       | 
- IG Bulg 1(2) | 3                | Tvarditsa       | 
+  corpusname  | corpusidnumber | modernlocation | ancientsite 
+--------------+----------------+----------------+-------------
+ I Aeg Thrace | 1              | Abdera         | Abdera
+ I Aeg Thrace | 2              | Abdera         | Abdera
+ IG Bulg 1(2) | 1              | Tvarditsa      | 
+ IG Bulg 1(2) | 2              | Tvarditsa      | 
+ IG Bulg 1(2) | 3              | Tvarditsa      | 
 (5 rows)
 
- Corpus name  | Corpus ID number | Ethnic name | Group Name Category 
---------------+------------------+-------------+---------------------
- I Aeg Thrace | 8                | Romaioi     | City
- IG Bulg 3,1  | 1548             | Thrakes     | Tribe
- Other        | Kabyle 2         | Galatai     | Tribe
- Other        | Kabyle 24        | Dadoparenos | Village
- I Aeg Thrace | 4                | Abderites   | City
+  corpusname  | corpusidnumber |  ethnicname  | groupnamecategory 
+--------------+----------------+--------------+-------------------
+ IG Bulg 4    | 2305|5919      | Neikopolitai | City
+ IG Bulg 3,1  | 1548           | Thrakes      | Tribe
+ Other        | Kabyle 2       | Galatai      | Tribe
+ Other        | Kabyle 24      | Dadoparenos  | Village
+ I Aeg Thrace | 4              | Abderites    | City
+(5 rows)
+
+  corpusname  | corpusidnumber | geographicname | geographictype 
+--------------+----------------+----------------+----------------
+ Other        | Kabyle 10      | Kabyle         | Settlement
+ I Aeg Thrace | 2              | Abdera         | Settlement
+ I Aeg Thrace | 4              | Delphi         | Settlement
+ I Aeg Thrace | 5              | Rome           | Settlement
+ I Aeg Thrace | 5              | Teos           | Area
+(5 rows)
+
+  corpusname  | corpusidnumber | comment | personalname 
+--------------+----------------+---------+--------------
+ I Aeg Thrace | 212            |         | Xenokritos
+ I Aeg Thrace | 212            |         | Mykeneus
+ I Aeg Thrace | 5              |         | Amymon
+ I Aeg Thrace | 5              |         | Megathymos
+ I Aeg Thrace | 5              |         | Kotys
+(5 rows)
+
+  corpusname  |  corpusidnumber  | comment | ethnicname 
+--------------+------------------+---------+------------
+ Other        | Gyuzelev 2013 15 |         | Kyzikenos
+ I Aeg Thrace | 7                |         | Akanthios
+ I Aeg Thrace | 8                |         | Romaioi
+ I Aeg Thrace | 9                |         | Romaioi
+ I Aeg Thrace | 9                |         | Romaioi
 (5 rows)
 

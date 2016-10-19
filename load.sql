@@ -6,25 +6,25 @@ create database hat;
 create extension "postgis";
 
 create table administrative_keywords (
-"adminKey"	integer primary key,
-"Administrative keywords" text,
-"Category Admin keyword" text,
-"Origin" text,
-"Short summary" text,
-"Author or Creator >" text
+adminKey	integer primary key,
+AdministrativeKeywords text,
+CategoryAdminKeyword text,
+Origin text,
+ShortSummary text,
+AuthorOrCreator text
 );
 
 \COPY administrative_keywords FROM 'Administrative_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table collective_name (
-"collectiveKey" integer primary key,
-"Ethnic name" text,
-"Group Name Category" text,
-"Origin" text,
-"Typology of ethnic name" text,
-"Short summary" text,
-"Mappable location" text,
-"Author or Creator" text
+collectiveKey integer primary key,
+EthnicName text,
+GroupNameCategory text,
+Origin text,
+TypologyOfEthnicName text,
+ShortSummary text,
+MappableLocation text,
+AuthorOrCreator text
 );
 
 
@@ -32,103 +32,103 @@ create table collective_name (
 
 alter table collective_name add column mapLocText text;
 
-update collective_name set mapLocText = "Mappable location";
+update collective_name set mapLocText = MappableLocation;
 
-alter table collective_name drop column "Mappable location";
+alter table collective_name drop column MappableLocation;
 
-alter table collective_name add column "Mappable location" geometry;
+alter table collective_name add column MappableLocation geometry;
 
-update collective_name set "Mappable location" = ST_GeomFromText(mapLocText, 4326);
+update collective_name set MappableLocation = ST_GeomFromText(mapLocText, 4326);
 
 alter table collective_name drop column mapLocText;
 
 create table epigraphic_person (
-"personKey" integer primary key,
-"Personal name" text,
-"Parent's name" text,
-"Ethnic name" text,
-"Partner's name" text,
-"Grandparent's name" text,
-"Comments" text
+personKey integer primary key,
+PersonalName text,
+ParentName text,
+EthnicName text,
+PartnerName text,
+GrandparentName text,
+Comments text
 );
 
 \COPY epigraphic_person FROM 'Epigraphic_Person.txt' WITH DELIMITER ',' CSV HEADER
 
 create table epithet (
-"epithetKey" integer primary key,
-"Epithet" text,
-"Author or Creator" text,
-"Short summary" text
+epithetKey integer primary key,
+Epithet text,
+AuthorOrCreator text,
+ShortSummary text
 );
 
 \COPY epithet FROM 'Epithet.txt' WITH DELIMITER ',' CSV HEADER
 
 create table formulaic_keywords (
-"formKey"	integer primary key,
-"Formulae" text,
-"Formulaic category" text,
-"Origin" text,
-"Short summary" text,
-"Author or Creator >" text
+formKey	integer primary key,
+Formulae text,
+FormulaicCategory text,
+Origin text,
+ShortSummary text,
+AuthorOrCreator text
 );
 
 \COPY formulaic_keywords FROM 'Formulaic_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table honorific_keywords (
-"honorKey"	integer primary key,
-"Honorific keyword" text,
-"Origin" text,
-"Honorific category" text,
-"Short summary" text,
-"Author or Creator >" text
+honorKey	integer primary key,
+HonorificKeyword text,
+Origin text,
+HonorificCategory text,
+ShortSummary text,
+AuthorOrCreator text
 );
 
 \COPY honorific_keywords FROM 'Honorific_keywords.txt' WITH DELIMITER ',' CSV HEADER
  
 create table religious_keywords (
-"religKey"	integer primary key,
-"Religious keyword" text,
-"Origin" text,
-"Religious Category" text,
-"Short summary" text,
-"Author or Creator >" text
+religKey	integer primary key,
+ReligiousKeyword text,
+Origin text,
+ReligiousCategory text,
+ShortSummary text,
+AuthorOrCreator text
 );
 
 \COPY religious_keywords FROM 'Religious_keywords.txt' WITH DELIMITER ',' CSV HEADER
 
 create table location (
-"locKey"	integer primary key,
-"Modern Location" text,
-"Ancient Site" text,
-"Ancient site - region" text,
-"Temporal horizon" text,
-"Author or Creator >" text
+locKey	integer primary key,
+ModernLocation text,
+AncientSite text,
+AncientSiteRegion text,
+TemporalHorizon text,
+AuthorOrCreator text
 );
 
 \COPY location FROM 'Location.txt' WITH DELIMITER ',' CSV HEADER
 
 create table personal_name (
-"nameKey"	integer primary key,
-"Personal name" text,
-"Gender" text,
-"Ethnicity" text,
-"Roman onomastics" text,
-"LPGN date" text,
-"Parissaki date" text,
-"Author or Creator >" text
+nameKey	integer primary key,
+PersonalName text,
+Gender text,
+Ethnicity text,
+RomanOnomastics text,
+LpgnDate text,
+ParissakiDate text,
+AuthorOrCreator text
 );
 
 \COPY personal_name FROM 'Personal_Name.txt' WITH DELIMITER ',' CSV HEADER
 
 create table geographic_name (
-"geoKey"	integer primary key,
-"Geographic name" text,
-"Geographic Type" text,
-"Type of geographical entity" text,
-"Short summary" text,
-"Mappable location" text,
-"Date" text,
-"Author or Creator >" text
+geoKey	integer primary key,
+GeographicName text,
+GeographicType text,
+TypeOfGeographicalEntity text,
+ShortSummary text,
+MappableLocation text,
+Date text,
+AuthorOrCreator text
 );
 
 
@@ -137,239 +137,326 @@ create table geographic_name (
 
 alter table geographic_name add column mapLocText text;
 
-update geographic_name set mapLocText = "Mappable location";
+update geographic_name set mapLocText = MappableLocation;
 
-alter table geographic_name drop column "Mappable location";
+alter table geographic_name drop column MappableLocation;
 
-alter table geographic_name add column "Mappable location" geometry;
+alter table geographic_name add column MappableLocation geometry;
 
-update geographic_name set "Mappable location" = ST_GeomFromText(mapLocText, 4326);
+update geographic_name set MappableLocation = ST_GeomFromText(mapLocText, 4326);
 
 alter table geographic_name drop column mapLocText;
 
 create table inscription_info (
-"inscriptionKey" integer PRIMARY KEY,
-"Creator of the record" text,
-"Checked" text,
-"Corpus name" text,
-"Corpus ID number" text,
-"Corpus ID numeric" numeric,
-"SEG number" text,
-"Location >" text,
-"Geolocation" text,
-"Position certainty" text,
-"Geography notes" text,
-"Reuse" text,
-"Archaeological context" text,
-"Mound" text,
-"Material category" text,
-"Stone" text,
-"Origin of stone" text,
-"Object category" text,
-"Preservation" text,
-"Decoration" text,
-"Relief decoration" text,
-"Architectural relief" text,
-"Figural relief" text,
-"Decoration notes" text,
-"Visual record availability" text,
-"Start Year" numeric,
-"End Year" numeric,
-"Relative Date" text,
-"Century" text,
-"Dialect" text,
-"Latin" text,
-"Language form" text,
-"Script" text,
-"Layout" text,
-"Document typology" text,
-"Public documents" text,
-"Private documents" text,
-"Document typology notes" text,
-"Extent of lines" text,
-"Administrative keywords" text,
-"Formulaic keywords" text,
-"Honorific keywords" text,
-"Religious keywords" text,
-"Epithet >" text,
-"Collective group names" text,
-"Geographic names" text,
-"Imperial titulature" text,
-"Currency" text,
-"Person >" text,
-"Visual documentation" text
+inscriptionKey integer PRIMARY KEY,
+CreatorOfTheRecord text,
+Checked text,
+CorpusName text,
+CorpusIdNumber text,
+CorpusIdNumeric numeric,
+SegNumber text,
+Location text,
+Geolocation text,
+PositionCertainty text,
+GeographyNotes text,
+Reuse text,
+ArchaeologicalContext text,
+Mound text,
+MaterialCategory text,
+Stone text,
+OriginOfStone text,
+ObjectCategory text,
+Preservation text,
+Decoration text,
+ReliefDecoration text,
+ArchitecturalRelief text,
+FiguralRelief text,
+DecorationNotes text,
+VisualRecordAvailability text,
+StartYear numeric,
+EndYear numeric,
+RelativeDate text,
+Century text,
+Dialect text,
+Latin text,
+LanguageForm text,
+Script text,
+Layout text,
+DocumentTypology text,
+PublicDocuments text,
+PrivateDocuments text,
+DocumentTypologyNotes text,
+ExtentOfLines text,
+AdministrativeKeywords text,
+FormulaicKeywords text,
+HonorificKeywords text,
+ReligiousKeywords text,
+Epithet text,
+CollectiveGroupNames text,
+GeographicNames text,
+ImperialTitulature text,
+Currency text,
+Person text,
+VisualDocumentation text
 );
 
 \COPY inscription_info FROM 'Inscription_Info.txt' WITH DELIMITER ',' CSV HEADER
 
 
 create table adminInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"adminKey" integer REFERENCES administrative_keywords,
-	PRIMARY KEY ("inscriptionKey", "adminKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	adminKey integer REFERENCES administrative_keywords,
+	PRIMARY KEY (inscriptionKey, adminKey)
 );
 
-insert into adminInscription("inscriptionKey", "adminKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Administrative keywords", '|')) s(token) where "Administrative keywords" is not null;
+insert into adminInscription(inscriptionKey, adminKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(AdministrativeKeywords, '|')) s(token) where AdministrativeKeywords is not null;
 
-alter table inscription_info drop column "Administrative keywords";
+alter table inscription_info drop column AdministrativeKeywords;
 
 
 create table formInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"formKey" integer REFERENCES formulaic_keywords,
-	PRIMARY KEY ("inscriptionKey", "formKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	formKey integer REFERENCES formulaic_keywords,
+	PRIMARY KEY (inscriptionKey, formKey)
 );
 
-insert into formInscription("inscriptionKey", "formKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Formulaic keywords", '|')) s(token) where "Formulaic keywords" is not null;
+insert into formInscription(inscriptionKey, formKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(FormulaicKeywords, '|')) s(token) where FormulaicKeywords is not null;
 
-alter table inscription_info drop column "Formulaic keywords";
+alter table inscription_info drop column FormulaicKeywords;
 
 create table honorInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"honorKey" integer REFERENCES honorific_keywords,
-	PRIMARY KEY ("inscriptionKey", "honorKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	honorKey integer REFERENCES honorific_keywords,
+	PRIMARY KEY (inscriptionKey, honorKey)
 );
 
-insert into honorInscription("inscriptionKey", "honorKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Honorific keywords", '|')) s(token) where "Honorific keywords" is not null;
+insert into honorInscription(inscriptionKey, honorKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(HonorificKeywords, '|')) s(token) where HonorificKeywords is not null;
 
-alter table inscription_info drop column "Honorific keywords";
+alter table inscription_info drop column HonorificKeywords;
 
 
 create table religInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"religKey" integer REFERENCES religious_keywords,
-	PRIMARY KEY ("inscriptionKey", "religKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	religKey integer REFERENCES religious_keywords,
+	PRIMARY KEY (inscriptionKey, religKey)
 );
 
-insert into religInscription("inscriptionKey", "religKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Religious keywords", '|')) s(token) where "Religious keywords" is not null;
+insert into religInscription(inscriptionKey, religKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(ReligiousKeywords, '|')) s(token) where ReligiousKeywords is not null;
 
-alter table inscription_info drop column "Religious keywords";
+alter table inscription_info drop column ReligiousKeywords;
 
 
 create table epithetInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"epithetKey" integer REFERENCES epithet,
-	PRIMARY KEY ("inscriptionKey", "epithetKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	epithetKey integer REFERENCES epithet,
+	PRIMARY KEY (inscriptionKey, epithetKey)
 );
 
-insert into epithetInscription("inscriptionKey", "epithetKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Epithet >", '|')) s(token) where "Epithet >" is not null;
+insert into epithetInscription(inscriptionKey, epithetKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(Epithet, '|')) s(token) where Epithet is not null;
 
-alter table inscription_info drop column "Epithet >";
+alter table inscription_info drop column Epithet;
 
 create table locInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"locKey" integer REFERENCES location,
-	PRIMARY KEY ("inscriptionKey", "locKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	locKey integer REFERENCES location,
+	PRIMARY KEY (inscriptionKey, locKey)
 );
 
-insert into locInscription("inscriptionKey", "locKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Location >", '|')) s(token) where "Location >" is not null;
+insert into locInscription(inscriptionKey, locKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(Location, '|')) s(token) where Location is not null;
 
-alter table inscription_info drop column "Location >";
+alter table inscription_info drop column Location;
 
 
 
 create table geoInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"geoKey" integer REFERENCES geographic_name,
-	PRIMARY KEY ("inscriptionKey", "geoKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	geoKey integer REFERENCES geographic_name,
+	PRIMARY KEY (inscriptionKey, geoKey)
 );
 
-insert into geoInscription("inscriptionKey", "geoKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Geographic names", '|')) s(token) where "Geographic names" is not null;
+insert into geoInscription(inscriptionKey, geoKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(GeographicNames, '|')) s(token) where GeographicNames is not null;
 
-alter table inscription_info drop column "Geographic names";
+alter table inscription_info drop column GeographicNames;
 
-select i."Corpus name", i."Corpus ID number", a."Geographic name", a."Geographic Type"
-  from inscription_info i
-  JOIN geoInscription USING ("inscriptionKey")
-  JOIN geographic_name a USING ("geoKey")
-  limit 5;
 
 create table collectiveInscription (
-	"inscriptionKey" integer REFERENCES inscription_info,
-	"collectiveKey" integer REFERENCES collective_name,
-	PRIMARY KEY ("inscriptionKey", "collectiveKey")
+	inscriptionKey integer REFERENCES inscription_info,
+	collectiveKey integer REFERENCES collective_name,
+	PRIMARY KEY (inscriptionKey, collectiveKey)
 );
 
-insert into collectiveInscription("inscriptionKey", "collectiveKey")
-select "inscriptionKey", cast(s.token as integer) from inscription_info, unnest(string_to_array("Collective group names", '|')) s(token) where "Collective group names" is not null;
+insert into collectiveInscription(inscriptionKey, collectiveKey)
+select inscriptionKey, cast(s.token as integer) from inscription_info, unnest(string_to_array(CollectiveGroupNames, '|')) s(token) where CollectiveGroupNames is not null;
 
-alter table inscription_info drop column "Collective group names";
+alter table inscription_info drop column CollectiveGroupNames;
 
 
 
 alter table inscription_info add column mapLocText text;
 
-update inscription_info set mapLocText = "Geolocation";
+update inscription_info set mapLocText = Geolocation;
 
-alter table inscription_info drop column "Geolocation";
+alter table inscription_info drop column Geolocation;
 
-alter table inscription_info add column "Geolocation" geometry;
+alter table inscription_info add column Geolocation geometry;
 
-update inscription_info set "Geolocation" = ST_GeomFromText(mapLocText, 4326);
+update inscription_info set Geolocation = ST_GeomFromText(mapLocText, 4326);
 
 alter table inscription_info drop column mapLocText;
 
 
+create table inscriptionPerson (
+	inscriptionKey integer REFERENCES inscription_info,
+	personKey integer REFERENCES epigraphic_person,
+	comment text,
+	PRIMARY KEY (inscriptionKey, personKey)
+);
+
+create table personPersonalName (
+	personKey integer REFERENCES epigraphic_person,
+	nameKey integer REFERENCES personal_name,
+	class text,
+	PRIMARY KEY (personKey, nameKey, class)
+);
 
 
-select i."Corpus name", i."Corpus ID number", a."Administrative keywords", a."Short summary"
+create table personCollectiveName (
+	personKey integer REFERENCES epigraphic_person,
+	collectiveKey integer REFERENCES collective_name,
+	PRIMARY KEY (personKey, collectiveKey)
+);
+
+
+insert into inscriptionPerson (inscriptionKey, personKey, comment)
+  	 select distinct inscriptionKey, cast(s.token as integer), epigraphic_person.Comments
+	   from inscription_info, epigraphic_person, unnest(string_to_array(inscription_info.Person, '|')) s(token) 
+	  where cast(s.token as integer) = epigraphic_person.personKey;
+
+insert into personPersonalName (personKey, nameKey, class)
+	 select distinct personKey, cast(s.token as integer), 'Personal name'
+	   from epigraphic_person, unnest(string_to_array(PersonalName, '|')) s(token)
+	   where PersonalName is not null;
+
+insert into personPersonalName (personKey, nameKey, class)
+	 select distinct personKey, cast(s.token as integer), 'Parent name'
+	   from epigraphic_person, unnest(string_to_array(ParentName, '|')) s(token)
+	   where ParentName is not null;
+
+
+insert into personPersonalName (personKey, nameKey, class)
+	 select distinct personKey, cast(s.token as integer), 'Partner name'
+	   from epigraphic_person, unnest(string_to_array(PartnerName, '|')) s(token)
+	   where PartnerName is not null;
+
+insert into personPersonalName (personKey, nameKey, class)
+	 select distinct personKey, cast(s.token as integer), 'Grandparent name'
+	   from epigraphic_person, unnest(string_to_array(GrandparentName, '|')) s(token)
+	   where GrandparentName is not null;
+
+
+insert into personCollectiveName (personKey, collectiveKey)
+	 select distinct personKey, cast(s.token as integer)
+	   from epigraphic_person, unnest(string_to_array(EthnicName, '|')) s(token)
+	   where EthnicName is not null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+select i.CorpusName, i.CorpusIdNumber, a.AdministrativeKeywords, a.ShortSummary
   from inscription_info i
-  JOIN adminInscription USING ("inscriptionKey")
-  JOIN administrative_keywords a USING ("adminKey")
+  JOIN adminInscription USING (inscriptionKey)
+  JOIN administrative_keywords a USING (adminKey)
   limit 5;
 
 
-select i."Corpus name", i."Corpus ID number", a."Formulaic category", a."Short summary"
+select i.CorpusName, i.CorpusIdNumber, a.FormulaicCategory, a.ShortSummary
   from inscription_info i
-  JOIN formInscription USING ("inscriptionKey")
-  JOIN formulaic_keywords a USING ("formKey")
+  JOIN formInscription USING (inscriptionKey)
+  JOIN formulaic_keywords a USING (formKey)
   limit 5;
 
 
-select i."Corpus name", i."Corpus ID number", a."Honorific keyword", a."Short summary"
+select i.CorpusName, i.CorpusIdNumber, a.HonorificKeyword, a.ShortSummary
   from inscription_info i
-  JOIN honorInscription USING ("inscriptionKey")
-  JOIN honorific_keywords a USING ("honorKey")
+  JOIN honorInscription USING (inscriptionKey)
+  JOIN honorific_keywords a USING (honorKey)
   limit 5;
 
 
-select i."Corpus name", i."Corpus ID number", a."Religious keyword", a."Short summary"
+select i.CorpusName, i.CorpusIdNumber, a.ReligiousKeyword, a.ShortSummary
   from inscription_info i
-  JOIN religInscription USING ("inscriptionKey")
-  JOIN religious_keywords a USING ("religKey")
+  JOIN religInscription USING (inscriptionKey)
+  JOIN religious_keywords a USING (religKey)
   limit 5; 
 
 
-select i."Corpus name", i."Corpus ID number", a."Epithet", a."Short summary"
+select i.CorpusName, i.CorpusIdNumber, a.Epithet, a.ShortSummary
   from inscription_info i
-  JOIN epithetInscription USING ("inscriptionKey")
-  JOIN epithet a USING ("epithetKey")
+  JOIN epithetInscription USING (inscriptionKey)
+  JOIN epithet a USING (epithetKey)
   limit 5;
 
 
-select i."Corpus name", i."Corpus ID number", a."Modern Location", a."Ancient Site"
+select i.CorpusName, i.CorpusIdNumber, a.ModernLocation, a.AncientSite
   from inscription_info i
-  JOIN locInscription USING ("inscriptionKey")
-  JOIN location a USING ("locKey")
+  JOIN locInscription USING (inscriptionKey)
+  JOIN location a USING (locKey)
   limit 5;
 
 
-select i."Corpus name", i."Corpus ID number", a."Ethnic name", a."Group Name Category"
+select i.CorpusName, i.CorpusIdNumber, a.EthnicName, a.GroupNameCategory
   from inscription_info i
-  JOIN collectiveInscription USING ("inscriptionKey")
-  JOIN collective_name a USING ("collectiveKey")
+  JOIN collectiveInscription USING (inscriptionKey)
+  JOIN collective_name a USING (collectiveKey)
   limit 5;
+
+
+select i.CorpusName, i.CorpusIdNumber, a.GeographicName, a.GeographicType
+  from inscription_info i
+  JOIN geoInscription USING (inscriptionKey)
+  JOIN geographic_name a USING (geoKey)
+  limit 5;
+
+select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, PersonalName
+  from inscription_info i
+  JOIN inscriptionPerson USING (inscriptionKey)
+  JOIN personPersonalName USING (personKey)
+  JOIN personal_name USING (nameKey)
+  WHERE class = 'Personal name'
+  limit 5;
+
+
+
+select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, EthnicName
+  from inscription_info i
+  JOIN inscriptionPerson USING (inscriptionKey)
+  JOIN personCollectiveName USING (personKey)
+  JOIN collective_name USING (collectiveKey)
+  
+  limit 5;
+
+
+
 
 
 -- select * from administrative_keywords;
--- select *, st_astext("Mappable location") from collective_name;
+-- select *, st_astext(MappableLocation) from collective_name;
 -- select * from formulaic_keywords;
 -- select * from honorific_keywords;
 -- select * from religious_keywords;
@@ -377,5 +464,5 @@ select i."Corpus name", i."Corpus ID number", a."Ethnic name", a."Group Name Cat
 -- select * from epigraphic_person;
 -- select * from location;
 -- select * from personal_name;
--- select *, st_astext("Mappable location") from geographic_name;
--- select *, st_astext("Geolocation") from inscription_info;
+-- select *, st_astext(MappableLocation) from geographic_name;
+-- select *, st_astext(Geolocation) from inscription_info;
