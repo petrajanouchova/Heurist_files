@@ -291,7 +291,6 @@ select i."Corpus name", i."Corpus ID number", a."Geographic name", a."Geographic
   JOIN geographic_name a USING ("geoKey")
   limit 5;
 
-
 create table collectiveInscription (
 	"inscriptionKey" integer REFERENCES inscription_info,
 	"collectiveKey" integer REFERENCES collective_name,
