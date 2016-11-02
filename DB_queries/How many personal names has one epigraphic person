@@ -1,0 +1,19 @@
+﻿SELECT 
+  personpersonalname.personkey,
+  inscriptionperson.inscriptionkey, 
+  count (inscriptionperson.inscriptionkey)
+  
+FROM 
+  public.personpersonalname, 
+  public.inscription_info, 
+  public.inscriptionperson, 
+  public.personal_name
+WHERE 
+  personpersonalname.namekey = personal_name.namekey AND
+  inscription_info.inscriptionkey = inscriptionperson.inscriptionkey AND
+  inscriptionperson.personkey = personpersonalname.personkey
+GROUP BY
+  inscriptionperson.inscriptionkey,
+  personpersonalname.personkey
+ORDER BY
+  inscriptionperson.inscriptionkey ASC;

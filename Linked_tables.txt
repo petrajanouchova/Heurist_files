@@ -1,0 +1,15 @@
+Inscription info/Administrative keywords = Administrative keywords
+Inscription info/Formulaic keywords = Formulaic keywords
+Inscription info/Honorific keywords = Honorific keywords
+Inscription info/Religious keywords = Religious keywords
+Inscription info/Epithet = Epithet 
+Inscription info/Collective group names = Collective name
+Inscription info/Geographic names = Geographic name
+Inscription info/Person > = Epigraphic person
+Inscription info/Location > = Location
+
+Epigraphic person/Personal name = personal_name
+Epigraphic person/Parent's name = personal_name
+Epigraphic person/Ethnic name = personal_name
+Epigraphic person/Partner's name = personal_name
+Epigraphic person/Grandparent's name = personal_name
