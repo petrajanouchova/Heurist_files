@@ -1,0 +1,24 @@
+﻿SELECT 
+  inscriptionperson.inscriptionkey, 
+  inscription_info.corpusname, 
+  inscription_info.corpusidnumber, 
+  inscription_info.corpusidnumeric, 
+  personpersonalname.personkey, 
+  personal_name.personalname, 
+  personal_name.ethnicity, 
+  collective_name.ethnicname, 
+  collective_name.groupnamecategory, 
+  collective_name.origin
+FROM 
+  public.inscription_info, 
+  public.personal_name, 
+  public.inscriptionperson, 
+  public.personpersonalname, 
+  public.collective_name, 
+  public.collectiveinscription
+WHERE 
+  inscription_info.inscriptionkey = inscriptionperson.inscriptionkey AND
+  inscription_info.inscriptionkey = collectiveinscription.inscriptionkey AND
+  inscriptionperson.personkey = personpersonalname.personkey AND
+  personpersonalname.namekey = personal_name.namekey AND
+  collectiveinscription.collectivekey = collective_name.collectivekey;
