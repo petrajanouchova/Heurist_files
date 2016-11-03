@@ -444,7 +444,7 @@ select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, PersonalName
 
 
 
-select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, EthnicName
+select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, EthnicName, origin
   from inscription_info i
   JOIN inscriptionPerson USING (inscriptionKey)
   JOIN personCollectiveName USING (personKey)
@@ -467,3 +467,5 @@ select i.CorpusName, i.CorpusIdNumber, inscriptionPerson.comment, EthnicName
 -- select * from personal_name;
 -- select *, st_astext(MappableLocation) from geographic_name;
 -- select *, st_astext(Geolocation) from inscription_info;
+
+
